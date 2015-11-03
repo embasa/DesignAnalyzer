@@ -18,6 +18,7 @@ public class DesignAnalyzer {
 
   void loadPackage(String path){
     System.out.println( "blah" );
+    System.out.println("blah more baby");
     System.out.println("Gathering class files in " + path);
     FilenameFilter classFilter = new FilenameFilter() {
       public boolean accept(File dir, String name) {
