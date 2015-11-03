@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Set;
 
 /**
+ * WHo cares
  * Created by bruno on 10/30/15.
  */
 public class DesignAnalyzer {
@@ -16,6 +17,7 @@ public class DesignAnalyzer {
   }
 
   void loadPackage(String path){
+    System.out.println( "blah" );
     System.out.println("Gathering class files in " + path);
     FilenameFilter classFilter = new FilenameFilter() {
       public boolean accept(File dir, String name) {
