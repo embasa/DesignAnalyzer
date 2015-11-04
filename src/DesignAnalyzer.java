@@ -12,40 +12,30 @@ import java.util.Set;
  */
 public class DesignAnalyzer {
   //Set<> pack = null;
-  public DesignAnalyzer(){
+  public DesignAnalyzer() {
 
   }
 
-  void loadPackage(String path){
+  void loadPackage( String path ) {
     System.out.println( "blah" );
-    System.out.println("blah more baby");
-    System.out.println("Gathering class files in " + path);
+    System.out.println( "blah more baby" );
+    System.out.println( "Gathering class files in " + path );
     FilenameFilter classFilter = new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.toLowerCase().endsWith(".class");
+      public boolean accept( File dir, String name ) {
+        return name.toLowerCase().endsWith( ".class" );
       }
     };
-    File f = new File(path); // the directory, really!
-    for (File file : f.listFiles(classFilter) )
-      System.out.println(file.getName());
+    File f = new File( path ); // the directory, really!
+    for ( File file : f.listFiles( classFilter ) )
+      System.out.println( file.getName() );
   }
-  public static void main(String[] args) throws IOException
-  {
-    FileLoader fl = new FileLoader();
-    if (args.length != 1) {
-      System.out.println("Usage FileLoader <path>");
+
+  public static void main( String[] args ) throws IOException {
+    DesignAnalyzer fl = new DesignAnalyzer();
+    if ( args.length != 1 ) {
+      System.out.println( "Usage FileLoader <path>" );
     } else {
-      fl.loadPackage(args[0]);
+      fl.loadPackage( args[ 0 ] );
     }
-  }
-
-  public File[] finder( String path){
-    File dir = new File(path );
-
-    return dir.listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String filename)
-      { return filename.endsWith(".class"); }
-    } );
-
   }
 }
