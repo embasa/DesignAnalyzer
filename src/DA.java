@@ -88,7 +88,7 @@ public class DA {
    * #p: number of classes in package
    *
    * @param a the class that is being referenced
-   * @return ratio of #c(A)/p
+   * @return ratio of #c(A)/#p
    */
   public double responsiblity(Class a) {
     int count = 0;
@@ -111,7 +111,7 @@ public class DA {
    * #p: number of classes in the package
    *
    * @param a class that is doing the referencing
-   * @return ratio of #p(A)/p
+   * @return ratio of #p(A)/#p
    */
   public double instability(Class a) {
     int count = 0;
@@ -174,7 +174,7 @@ public class DA {
    * the Class contains main. This Class will always be at the bottom of the list.
    * <p/>
    * Comparator logic: if Class o didn't throw NoSuchMethodException it contains main
-   * therefore consider t1 larger and vice versa. Otherwise compare using
+   * therefore consider o larger and vice versa. Otherwise compare using
    * simpleName(name without package info).
    **/
   public void displayMetrics() {
