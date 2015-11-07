@@ -6,17 +6,17 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Assignment 4 for CS 151
+ *
  * @author Bruno Osvaldo Hernandez Esquivel
  */
 public class DA {
   private Set<Class> classes = null;
+  private double packageClassCount = 0;
   private double packageMethodCount = 0;
-
 
   public static void main(String[] args) throws IOException {
     DA fl = new DA();
@@ -29,6 +29,7 @@ public class DA {
 
   /**
    * loads package at given path
+   *
    * @param path string representing a path from CLASSPATH
    */
   public void loadPackage(String path) {
@@ -53,10 +54,11 @@ public class DA {
       ClassLoader cl = new URLClassLoader(new URL[]{url});// Wrapping url
 
       for (File file : (new File(path)).listFiles(classFilter)) {
-        Class c = cl.loadClass(packageName + "." + file.getName().replaceAll(".class", ""));// remove '.class'
+        Class c = cl.loadClass(packageName + "." + file.getName().replaceAll("\\.class", ""));// remove '.class'
         packageMethodCount += c.getDeclaredMethods().length;
         classes.add(c);
       }
+      packageClassCount = classes.size();
     } catch (MalformedURLException | ClassNotFoundException | NullPointerException e) {
       e.printStackTrace();
     }
@@ -88,19 +90,19 @@ public class DA {
    * @param a the class that is being referenced
    * @return ratio of #c(A)/p
    */
-  private double responsiblity(Class a) {
+  public double responsiblity(Class a) {
     int count = 0;
     for (Class aClass : classes) {
-      if (!aClass.getName().equals(a.getName())) {
+      if (aClass.getSuperclass().getName().equals(a.getName())) {// This if statement must go first.
+        count++;
+      } else if (!aClass.getName().equals(a.getName())) {
         if (doesLeftClassReferenceRightClass(aClass, a)) {
           count++;
         }
-      } else if (aClass.getSuperclass().getName().equals(a.getName())) {
-        count++;
       }
     }
 
-    return Math.floor((double) 100 * count / classes.size()) / 100;
+    return Math.floor(100 * count / packageClassCount) / 100;
   }
 
   /**
@@ -111,7 +113,7 @@ public class DA {
    * @param a class that is doing the referencing
    * @return ratio of #p(A)/p
    */
-  private double instability(Class a) {
+  public double instability(Class a) {
     int count = 0;
     if (!a.getSuperclass().getName().equals("java.lang.Object")) {
       count++;
@@ -123,7 +125,7 @@ public class DA {
         }
       }
     }
-    return Math.floor((double) 100 * count / classes.size()) / 100;
+    return Math.floor(100 * count / packageClassCount) / 100;
   }
 
   /**
@@ -163,19 +165,42 @@ public class DA {
    * @param cl the Class objects who's Methods we want to count
    * @return #methods(cl)/#methods(Package)
    */
-  private double workload(Class cl) {
+  public double workload(Class cl) {
     return Math.floor(100 * cl.getDeclaredMethods().length / packageMethodCount) / 100;
   }
 
-
   /**
-   * Method for displaying Metrics for given package
+   * Prints metrics for each Class in Set. Sorts Classes in alphabetical order unless
+   * the Class contains main. This Class will always be at the bottom of the list.
+   * <p/>
+   * Comparator logic: if Class o didn't throw NoSuchMethodException it contains main
+   * therefore consider t1 larger and vice versa. Otherwise compare using
+   * simpleName(name without package info).
    **/
   public void displayMetrics() {
-    System.out.printf("%-20s%-20s%-20s%-20s%-20s%n", "C", "inDepth(C)", "instability(C)", "responsibility(C)", "workload(C)");
-    for (Class c : classes) {
-      String[] s = c.getName().split("\\.");
-      System.out.printf("%-20s%-20d%-20.2f%-20.2f%-20.2f%n", s[s.length - 1], inDepth(c), instability(c), responsiblity(c), workload(c));
+    System.out.printf("%-20s%-20s%-20s%-20s%-20s%n",
+        "C", "inDepth(C)", "instability(C)", "responsibility(C)", "workload(C)");
+    List<Class> list = new ArrayList<>(classes);
+    Collections.sort(list, new Comparator<Class>() {//sorts by name, moves Class with main to the bottom.
+      @Override
+      @SuppressWarnings("unchecked")
+      public int compare(Class o, Class t1) {
+        Class[] classes = new Class[]{(new String[]{}).getClass()};
+        try {// if o contains main consider o larger than t1
+          o.getDeclaredMethod("main", classes);
+          return 1;
+        } catch (NoSuchMethodException e) {/* do nothing */}
+        try {// if t1 contains main consider t1 larger than o
+          t1.getDeclaredMethod("main", classes);
+          return -1;
+        } catch (NoSuchMethodException e) {/* do nothing */}
+        return o.getSimpleName().compareTo(t1.getSimpleName());
+      }
+    });
+
+    for (Class c : list) {
+      System.out.printf("%-20s%-20d%-20.2f%-20.2f%-20.2f%n",
+          c.getSimpleName(), inDepth(c), instability(c), responsiblity(c), workload(c));
     }
   }
 }

@@ -11,6 +11,11 @@ public class FileLoader {
     Money = money;
   }
 
+  public int function(int i){
+
+    return 0;
+  }
+
   private int Money = 12;
 
   public void loadPackage(String path) throws IOException {
