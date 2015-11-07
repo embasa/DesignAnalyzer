@@ -125,6 +125,7 @@ public class DA {
         }
       }
     }
+
     return Math.floor(100 * count / packageClassCount) / 100;
   }
 
@@ -185,16 +186,16 @@ public class DA {
       @Override
       @SuppressWarnings("unchecked")
       public int compare(Class o, Class t1) {
-        Class[] classes = new Class[]{(new String[]{}).getClass()};
+        Class[] parameterType = new Class[]{(new String[]{}).getClass()};//String[] type parameter for main
         try {// if o contains main consider o larger than t1
-          o.getDeclaredMethod("main", classes);
+          o.getDeclaredMethod("main", parameterType);
           return 1;
         } catch (NoSuchMethodException e) {/* do nothing */}
         try {// if t1 contains main consider t1 larger than o
-          t1.getDeclaredMethod("main", classes);
+          t1.getDeclaredMethod("main", parameterType);
           return -1;
         } catch (NoSuchMethodException e) {/* do nothing */}
-        return o.getSimpleName().compareTo(t1.getSimpleName());
+        return o.getSimpleName().compareTo(t1.getSimpleName());//simpleName comparison
       }
     });
 

@@ -29,15 +29,14 @@
       <file leaf-file-name="DA.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2859097">
-              <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.024623804">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#1160#1311#0" expanded="true" />
                 <element signature="e#1310#1311#0" expanded="true" />
-                <element signature="e#5705#6411#0" expanded="true" />
-                <element signature="e#5806#5836#0" expanded="true" />
-                <element signature="e#6410#6411#0" expanded="true" />
+                <element signature="e#5706#6487#0" expanded="true" />
+                <element signature="e#5807#5837#0" expanded="true" />
+                <element signature="e#6486#6487#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -705,7 +704,7 @@
       <updated>1446703047351</updated>
       <workItem from="1446703048522" duration="7416000" />
       <workItem from="1446757638310" duration="16484000" />
-      <workItem from="1446843289706" duration="17110000" />
+      <workItem from="1446843289706" duration="18018000" />
     </task>
     <task id="LOCAL-00001" summary="Working version of project">
       <created>1446763953535</created>
@@ -725,11 +724,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446869820462</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated: corrected typos">
+      <created>1446873615725</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1446873615726</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41010000" />
+    <option name="totallyTimeSpent" value="41918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="0" width="1926" height="1081" extended-state="6" />
@@ -775,7 +780,8 @@
     <MESSAGE value="Working version of project" />
     <MESSAGE value="Almost final version of assignment" />
     <MESSAGE value="Final version with anonymous comparator." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final version with anonymous comparator." />
+    <MESSAGE value="updated: corrected typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated: corrected typos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -791,12 +797,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1160#1311#0" expanded="true" />
             <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#5705#6411#0" expanded="true" />
-            <element signature="e#5806#5836#0" expanded="true" />
-            <element signature="e#6410#6411#0" expanded="true" />
+            <element signature="e#5706#6487#0" expanded="true" />
+            <element signature="e#5807#5837#0" expanded="true" />
+            <element signature="e#6486#6487#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -827,15 +832,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2859097">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.024623804">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1160#1311#0" expanded="true" />
             <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#5705#6411#0" expanded="true" />
-            <element signature="e#5806#5836#0" expanded="true" />
-            <element signature="e#6410#6411#0" expanded="true" />
+            <element signature="e#5706#6487#0" expanded="true" />
+            <element signature="e#5807#5837#0" expanded="true" />
+            <element signature="e#6486#6487#0" expanded="true" />
           </folding>
         </state>
       </provider>
